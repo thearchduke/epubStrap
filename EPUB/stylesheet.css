@@ -1,0 +1,29 @@
+@charset "UTF-8";
+@import "fonts.css";
+@namespace "http://www.w3.org/1999/xhtml";
+@namespace epub "http://www.idpf.org/2007/ops";
+
+
+body {
+    display:block;
+    font-family: "Libertine", times, serif;
+}
+
+p {
+    font-family: "Libertine", times, serif;
+}
+
+.wrongX {
+    color: #b00;
+    font-style: italic;
+}
+
+.rightCheck {
+    color: #0b0;
+    font-style: italic;
+}
+
+.explanation {
+    font-style: italic;
+    display: none;
+}
