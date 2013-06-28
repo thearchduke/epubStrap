@@ -19,11 +19,13 @@ class of right or wrong indicating correctness. Further explanatory text may be 
 after an answer with the class explanation; however, this text may be visible on systems 
 that don't properly parse javascript/jQuery. */
     $('.answer.wrong').on('click', function () {
-        $(this).css('color', 'red');
+        $(this).prepend('<span class="wrongX">X </span>');
+        $(this).addClass('btn-danger');
         $(this).find('.explanation').show();
     });
     $('.answer.right').on('click', function () {
-        $(this).css('color', 'blue');
+        $(this).prepend('<span class="rightCheck">✓ </span>');
+        $(this).addClass('btn-success');
         $(this).find('.explanation').show();
     });
 });
