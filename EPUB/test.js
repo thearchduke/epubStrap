@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+
+/* HIDDEN CLASSES: These classes are hidden by the javascript so that they'll show up on non-JS-enabled 
+devices. See Introduction - Notes on Accessibility for details. */
+
+$('.slideIn').hide();
+
 /* HIGHLIGHTER: Any element with the class of 'highlighter' will use this code to 
 toggle highlighting for all elements of its parent's class(es); useful for plays, etc. */
     $('.highlighter').on('click', function () {
@@ -27,5 +33,29 @@ that don't properly parse javascript/jQuery. */
         $(this).prepend('<span class="rightCheck">✓ </span>');
         $(this).addClass('btn-success');
         $(this).find('.explanation').show();
+    });
+
+
+
+/* SLIDERS: To make something toggle between 'visible' and 'just a button', follow this template:
+      <div class="sliding slidIn">+/-
+         <span class="sliderText">Sohn am Ort, the son in town, lorem ipsum dolor sit amit</span >
+      </div>
+*/
+    $('.sliding').on('click', function () {
+      $(this).find('.sliderText').toggle();
+      $(this).toggleClass('slidIn');
+    });
+    $('.slidingSpan1').on('click', function () {
+      $(this).find('.sliderText').toggle();
+      $(this).toggleClass('slidIn');
+    });
+    $('.slidingSpan2').on('click', function () {
+      $(this).find('.sliderText').toggle();
+      $(this).toggleClass('slidIn');
+    });
+    $('.slidingSpan3').on('click', function () {
+      $(this).find('.sliderText').toggle();
+      $(this).toggleClass('slidIn');
     });
 });

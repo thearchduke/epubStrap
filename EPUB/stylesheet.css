@@ -4,6 +4,8 @@
 @namespace epub "http://www.idpf.org/2007/ops";
 
 
+/* BASIC FORMATTING */
+
 body {
     display:block;
     font-family: "Libertine", times, serif;
@@ -11,6 +13,12 @@ body {
 
 p {
     font-family: "Libertine", times, serif;
+}
+
+/* Makes first letter of first paragraph in each section neat */
+section p:first-of-type:first-letter {
+    font-size: 150%;
+    background-color: #FFF9E0;
 }
 
 .wrongX {
@@ -25,5 +33,76 @@ p {
 
 .explanation {
     font-style: italic;
+    display: none;
+}
+
+.shown {
+    display: inline-block;
+    width: inherit;
+    opacity:1; 
+    -webkit-transition: opacity 1s;
+    z-index: 1;
+    -webkit-box-shadow: -10px 10px 10px #888;
+}
+
+
+
+/* SLIDERS & SIDEBARS */
+
+aside[epub|type~='sidebar'] {
+   padding: 0.5em;
+   margin-left: 2em;
+   width: 25%;
+   max-width: 15em;
+   background-color: rgb(240,240,240);
+   border: solid 1px rgb(0,0,0);
+   float: right;
+}
+
+.sliding {
+   padding: 0.5em;
+   margin-left: 2em;
+   width: 40%;
+   max-width: 35em;
+   background-color: rgb(140,147,230);
+   border: solid 2px rgb(140,209,230);
+   float: right;
+}
+
+.slidingSpan1 {
+   padding: 0.5em;
+   margin-left: 2em;
+   width: 20%;
+   background-color: rgb(140,147,230);
+   border: solid 2px rgb(140,209,230);
+   float: right;
+}
+.slidingSpan2 {
+   padding: 0.5em;
+   margin-left: 2em;
+   width: 40%;
+   background-color: rgb(140,147,230);
+   border: solid 2px rgb(140,209,230);
+   float: right;
+}
+.slidingSpan3 {
+   padding: 0.5em;
+   margin-left: 2em;
+   width: 60%;
+   background-color: rgb(140,147,230);
+   border: solid 2px rgb(140,209,230);
+   float: right;
+}
+.slidIn {
+    width: 20px;
+    height: 20px;
+    float: right;
+    background-color: rgb(140,147,230);
+    border: solid 2px rgb(140,209,230);
+    padding: 0.5em;
+    margin-left: 2em;
+}
+
+.sliderText {
     display: none;
 }

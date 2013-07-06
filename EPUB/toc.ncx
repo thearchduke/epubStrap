@@ -21,13 +21,13 @@
         </navPoint>
         <navPoint id="section1" playOrder="2">
             <navLabel>
-                <text>Section 1: A New Hope</text>
+                <text>Introduction</text>
             </navLabel>
             <content src="section1.xhtml"/>
         </navPoint>
         <navPoint id="section2" playOrder="3">
             <navLabel>
-                <text>Section 2: Readium Strikes Back</text>
+                <text>Features</text>
             </navLabel>
             <content src="section2.xhtml"/>
         </navPoint>

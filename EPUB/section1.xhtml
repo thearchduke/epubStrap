@@ -11,176 +11,22 @@
       <script type="text/javascript" src="test.js"></script>
 </head>
    <body>
-<h1>Text highlighting:</h1>
-      <p>The text highlighting feature bears some explanation. Here's the sample 
-      code for this section:</p>
-
-      <p><code>&lt;div class="banquo"&gt; &lt;span class="highlighter"&gt;&lt;b&gt; BANQUO:&lt;/b&gt;&lt;/span&gt;
-   &lt;p&gt;Do you not hope your children shall be kings?&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="macbeth"&gt; &lt;span class="highlighter"&gt;&lt;b&gt; MACBETH:&lt;/b&gt;&lt;/span&gt;
-   &lt;p&gt;So foul and fair a day I have not seen.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="banquo"&gt; &lt;span class="highlighter"&gt;&lt;b&gt; BANQUO:&lt;/b&gt;&lt;/span&gt;
-   &lt;p&gt;Speak then to me, who neither beg nor fear your favours nor your hate.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="macbeth"&gt; &lt;span class="highlighter"&gt;&lt;b&gt; MACBETH:&lt;/b&gt;&lt;/span&gt;         
-   &lt;p&gt;This line, not by the bard, pads out this scene.&lt;/p&gt;
-&lt;/div&gt;</code></p>
-      
-      <p>The <code>span</code>s with class 'highlighter' surround the content that 
-      I want to toggle the highlighting, in this case, the speaker's name, though 
-      it can be arbitrary content and does not even need to be a <code>span</code>. 
-      The way the javascript functions is by selecting the parent of the 'highlighter' 
-      and toggling the background color of that element between white and yellow, as 
-      well as every other document of its class. Here, the highlighter is changing 
-      the background of the two <code>div</code> elements with classes <code>macbeth</code> 
-      and <code>banquo</code>, respectively. It is important to note that the highlighter 
-      element <b>must</b>, in the present configuration, be the <i>child</i> - not just 
-      a <i>descendant</i> - of the element whose class you wish to highlight. Take 
-      care, also, to ensure that the element whose class you wish to highlight only 
-      has <i>one</i> class.
-      </p>
-
-      <p>If you'd like to give the line of dialogue a formatting class in addition to 
-      the class-to-be-highlighted - if, for instance, you'd like something like 
-      &lt;div class="banquo dialogue"&gt; - feel free to wrap &lt;div class="banquo"&gt; 
-      in an extra div with the class of dialogue, or whatever you decide you'd like 
-      to use.</p>
-      
-      <p>Click the characters' names to toggle highlighting on and off.</p>
-
-      <div class="banquo"> <span class="highlighter"><b> BANQUO:</b></span>
-         <p>Do you not hope your children shall be kings?</p>
+   <section epub:type="introduction">
+      <h1>Introduction</h1>
+      <p>Welcome. This is an eBook about eBooks! It contains this introduction justifying its existence, 
+      some best practices about metadata and accessibility, and a walkthrough of the features contained herein. 
+      There are code snippets throughout, and the whole project can be viewed and downloaded at 
+      <a href="https://github.com/thearchduke/epubStrap">GitHub</a>.</p>
+      <div class="sliding slidIn">+/-
+         <span class="sliderText">I'm an expandable and collapsible block! You can use me for things like 
+         little notes that people don't necessarily need to read, or 'hint' content you might want to otherwise 
+         hide.</span >
       </div>
-      
-      <div class="macbeth"> <span class="highlighter"><b> MACBETH:</b></span>
-         <p>So foul and fair a day I have not seen.</p>
+      <div class="sliding slidIn">+/-
+         <span class="sliderText">I'm an expandable and collapsible block! You can use me for things like 
+            little notes that people don't necessarily need to read, or 'hint' content you might want to otherwise 
+            hide.</span >
       </div>
-      
-      <div class="banquo"> <span class="highlighter"><b> BANQUO:</b></span>
-         <p>Speak then to me, who neither beg nor fear your favours nor your hate.</p>
-      </div>
-      
-      <div class="macbeth"> <span class="highlighter"><b> MACBETH:</b></span>         
-         <p>This line, not by the bard, pads out this scene.</p>
-      </div>
-
-<h1>Quizzes:</h1>
-   <p>Here's the code for this section:</p>
-
-   <p><code>
-&lt;div class="quiz"&gt;
-   &lt;div class="question"&gt;
-      &lt;p&gt;What is two plus two?&lt;/p&gt;
-         &lt;ul&gt;
-            &lt;li&gt;&lt;button class="btn answer wrong"&gt;Two &lt;span class="explanation"&gt;(Too many twos!)&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;button class="btn answer wrong"&gt;Three&lt;/button&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;button class="btn answer right"&gt;Four &lt;span class="explanation"&gt;(Four is also two &lt;i&gt;times&lt;/i&gt; two - or two squared!)&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
-         &lt;/ul&gt;
-   &lt;/div&gt;
-&lt;/div&gt;
-   </code></p>
-
-   <p>Quizzes are fairly straightforward. First, let me say that the classes 
-      of quiz and question are simply for CSS formatting purposes and are not part 
-      of the interactive function. Now then: to make a quiz, simply mark each 
-      possible answer with the class 'answer', and indicate whether it is right or wrong 
-      with classes as shown above. If you'd like to provide an explanation that is 
-      displayed after the answer is selected, simply give it the class 'explanation'. 
-      Remember that this is a javascript implementation, so quizzes won't work on 
-      readers that don't allow javascript! Also, part of the code uses the jQuery 
-      function <code>prepend</code> to add the <span class="wrongX">X </span> and 
-      <span class="rightCheck">✓ </span> glyphs after an answer is selected; this 
-      will only work on some devices, as not everything supports <code>prepend</code>.
-      </p>
-
-      <p>Lastly, not all devices (mostly the older ones) support external CSS 
-      as is used in EPUB3. If there's an explanation that you'd prefer stay hidden 
-      in the absence of external CSS support and javascript support, make sure to 
-      add the style in-line like so: <code>&lt;span class="explanation" style="
-      display:none;"&gt;</code>.</p>
-      
-      <p>Quiz results reset every time the user goes to a section of the book other than the one that contains the quiz. I use 'section' here to 
-      refer to the XHTML documents that appear in the toc.ncx and toc.xhtml files. Those two files may have other names in other file packages, 
-      but the names I've used here (as well as how they're described in content.opf) are EPUB3 <i>conventions</i>, if not strict requirements.</p>
-
-      <div class="quiz">
-         <h3>Quiz time!</h3>
-         <div class="question">
-            <p>What is two plus two?</p>
-            <ul>
-               <li><button class="btn answer wrong">Two <span class="explanation">(Too many twos!)</span></button></li>
-               <li><button class="btn answer wrong">Three</button></li>
-               <li><button class="btn answer right">Four <span class="explanation">(Four is also 
-                  two <i>times</i> two - or two squared!)</span></button></li>
-            </ul>
-         </div>
-      </div>
-
-<h1>Movies:</h1>
-   <p>Fun fact: The open-source movie format WebM is the prefered distribution format 
-      for EPUB3. <code>ffmpeg</code> is a command-line tool that some 
-      readers may recognize; a command like <code>ffmpeg -i origin.mp4 output.webm</code> 
-      will do the conversion for you. The software packages VLC and Miro Converter 
-      can also perform this conversion for you, and have the advantage of a graphical 
-      interface. A Google search for 'webm converter' can also help you pick the right 
-      program for your system. To ensure that your videos work on a variety of systems, 
-      you can provide multiple <code>source</code> elements inside the <code>video</code> 
-      element, as I have done here.</p>
-      
-      <p>mp4 and similar formats <i>will</i> function on, for instance, the iPad, 
-      but this is not a recommended use of the standard, as the Readium SDK does 
-      not have the best support for them, and thus their use is best avoided; at the 
-      very least, it is best to provide a webm-formatted video alongside whatever 
-      your original formatting is. Please also note the <code>div</code> element with 
-      the <code>class</code> "err"; this will be displayed in the event of the 
-      hardware's inability to display your video file(s).</p>
-      <video id="video1" controls="controls">
-         <source src="movieSample.mp4" type="video/mp4"/>
-         <source src="movieSample.webm" type="video/webm"/>
-         <div class="err">
-            <p>
-               Sorry, it appears your system 
-               either does not support video 
-               playback or cannot play the 
-               MP4 and WebM formats provided.
-            </p>
-         </div>
-      </video>
-
-<h1>Bootstrap scaffolding:</h1>
-      <div class="container">
-         <div class="row"> 
-            <div class="span4"><p>Here's another fun fact! EPUB3 offers support for 
-            not just reflowable text, but also both fixed and responsive layouts.</p>
-            </div>
-            <div class="span4 offset1">
-               <p>Here's an example for you. I've set this up to allow the author 
-               to use the popular Bootstrap library, which is provided generally free 
-               of intellectual property claims by Twitter. (You can find details in 
-               the licensing appendix.)</p>
-            </div>
-            <div class="span2">
-               <p>Now, I'm overdoing it here, but it's for a good reason: to 
-                  demonstrate the flexibility that's possible in the framework. 
-                  It's also quite easy, and many of the world's website makers 
-                  know how to use it already. So it's included in this package.</p>
-            </div>
-         </div>
-         <div class="row">
-            <div class="span12">
-               <p><b>Let me emphasize that I don't think this is always a good idea.</b> 
-               It looks great on the Readium SDK, but not so great on something like 
-               an iPad. To make a true fixed layout work on the iPad right now requires 
-               much more sophisticated coding than I'm attempting to provide here, 
-               and the standards for fixed layout will likely change once the standard 
-               fully matures, so there's not much point in trying. Lastly, since fixed 
-               layouts tend to be graphic intensive and platform-dependent, I don't know 
-               how useful it will be to the community at large.</p>
-            </div>
-         </div>
-      </div>
-         
+   </section>
    </body>
 </html>
