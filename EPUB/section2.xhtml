@@ -5,10 +5,12 @@
       <meta name="DC.TITLE" content="EPUB3 Ideas" />
       <meta name="DC.CREATOR" content="J. Tynan Burke" />
       <meta name="DC.FORMAT" content="EPUB3" />
-      <link rel="stylesheet" type="text/css" href="stylesheet.css" />
-      <link rel="stylesheet" type="text/css" href="bootstrap.css" />
-      <script src="jqMin.js" type="text/javascript"></script>
-      <script type="text/javascript" src="test.js"></script>
+      <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+      <script src="js/jqMin.js" type="text/javascript"></script>
+      <script src="js/jqCycle.js" type="text/javascript"></script>
+      <script type="text/javascript" src="js/script.js"></script>
+      <script type="text/javascript" src="js/bootstrap.js"></script>
    </head>
    <body>
       <h1>Text highlighting:</h1>
@@ -154,8 +156,8 @@
          &lt;/video&gt;
       </code></p>
       <video id="video1" controls="controls">
-         <source src="movieSample.mp4" type="video/mp4"/>
-         <source src="movieSample.webm" type="video/webm"/>
+         <source src="movies/movieSample.mp4" type="video/mp4"/>
+         <source src="movies/movieSample.webm" type="video/webm"/>
          <div class="err">
             <p>
                Sorry, it appears your system 
@@ -166,22 +168,93 @@
          </div>
       </video>
       
-      <h1>Bootstrap scaffolding:</h1>
+      <h1>Slideshows &amp; transitions:</h1>
+      <p>
+         Also included is the jQuery Cycle plugin, making slideshows a snap. This HTML:
+      </p>
+
+      <p><code>
+       &lt;div class="slideshow1"&gt;
+         &lt;div class="slideshow"&gt;
+           &lt;img src="column-1.png"/&gt;
+           &lt;img src="column-2.png"/&gt;
+           &lt;img src="column-3.png"/&gt;
+           &lt;/div&gt;         
+         &lt;p id="slideshow1caption"&gt;&lt;/p&gt;
+       &lt;/div&gt;         
+      </code></p>
+      
+      <p>
+         And this javascript:
+      </p>
+
+      <p><code>
+     $('.slideshow').cycle({
+       fx: 'shuffle',
+       slideExpr: 'img',
+       after: function() {
+         var myClass = $(this).parent().parent().attr("class");
+         $('.' + myClass + 'caption').html(this.alt);
+       }
+     });
+      </code></p>
+
+      <p>
+         Makes this slideshow, which uses some random graphics I made a while back:
+      </p>
+   <div class="slideshow1">
+      <div class="slideshow">
+            <img src="images/column-1.png" alt="Picture caption 1"/>
+            <img src="images/column-2.png" alt="Picture caption 2"/>
+            <img src="images/column-3.png" alt="Picture caption 3"/>
+      </div>
+      <p class="slideshow1caption"></p>
+   </div>
+
+      <p>
+         ...giving you an easy way to liven up any text, particularly educational material. To make 
+         a basic slideshow, all you need to do is put images inside of a div classed 'slideshow'. 
+         To make a slideshow with captions, use the structure shown above, where the slideshow div 
+         is wrapped in another div, which also contains a paragraph with the class of the parent div's class plus 
+         'caption'. In this example, the parent is 'slideshow1', and contains the basic 'slideshow' div 
+         as well as a p with class 'slideshow1caption'.
+      </p>
+
+
+      <p>
+         To customize the slideshow, check out <a href="http://malsup.com/jquery/cycle/">
+            the documentation for jQuery Cycle</a>.
+      </p>
+
+
+      <h1>Bootstrap elements:</h1>
+      <p>
+         This package contains the popular Bootstrap HTML5 library, which is produced under the Apache License 2.0 by 
+         Twitter. Web developers familiar with the library will find that many of the features integrate well into 
+         EPUB3. As a simple yet relevant example, the button classes I used in the quiz section provide friendly 
+         and pleasant interface elements that go a long way towards modernizing the look of your eBook.
+      </p>
+
+      <p>
+         Bootstrap also has powerful fixed-layout and dynamic-layout classes, which I demonstrate below. Please note 
+         that this might not display correctly on your device, and as such I recommend not relying on it unless you're 
+         making a fixed-layout EPUB.
+      </p>
+
+
       <div class="container">
          <div class="row"> 
-            <div class="span4"><p>Here's another fun fact! EPUB3 offers support for 
+            <div class="span4"><p>EPUB3 offers support for 
                not just reflowable text, but also both fixed and responsive layouts. This is not always 
                going to be the right thing to do, mind you. Childrens' books and technical manuals are 
                the two canonical examples of cases where it may be beneficial to use a fixed layout, 
                but it's going to display quite differently across a variety of devices and isn't always 
                a good idea. Remember, too, that one of the biggest advantages of the EPUB3 specification is 
-               reflowable text, which does not work well with a fixed layout.</p>
+               reflowable text, which does not work with a fixed layout.</p>
             </div>
             <div class="span4 offset1">
                <p>That being said, here's an example for you. I've set this code up to allow the author 
-                  to use the popular Bootstrap library, which is provided generally free 
-                  of intellectual property claims by Twitter. (You can find details in 
-                  the licensing appendix.)</p>
+                  to use the popular Bootstrap library.</p>
             </div>
             <div class="span2">
                <p>Now, I'm overdoing it here, but it's for a good reason: to 
@@ -193,7 +266,7 @@
          <div class="row">
             <div class="span12">
                <p><b>Let me emphasize that I don't think this is always a good idea.</b> 
-                  It looks great on the Readium SDK, but not so great on something like 
+                  It looks great on Readium, but not so great on something like 
                   an iPad. Further, making a true fixed-layout document function on the iPad right now requires 
                   much more sophisticated coding than I'm providing here, 
                   and the standards for fixed layout will likely change, possibly significantly, in the coming few years. 
@@ -203,28 +276,25 @@
          </div>
       </div>
       
-      <h1>Sliding divs:</h1>
+      <p>I leave it to the enterprising developer to figure out other ways of integrating Bootstrap materials into 
+      the EPUB3 framework, though I might advise waiting until the readers are more standardized.</p>
       
-      <p>Consider this clip of a page from a German reader that I've re-rendered here 
-         as an SVG (which is great for fixed layouts if you don't want the whole EPUB to be fixed-layout, by the way). 
-         The book has vocabulary hints on the left page and the the German text itself on the right:
-         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="200">
-            <text x="10" y="50"><tspan style="font-weight: bold;">Sohn am Ort</tspan>  the son in town
-               <tspan x="10" y="80"><tspan style="font-weight: bold;">Verkehr pflegen</tspan>  to keep up contact...</tspan>
-            </text>
-            <text x="420" y="20">Dazu kam, dass meine Groszmutter nicht 
-               <tspan x="420" y="50">nur mit ihrem Sohn am Ort keinen regelmaeszigen</tspan>
-               <tspan x="420" y="80">Verkehr pflegte...</tspan></text>
-            <line x1="370" y1="0" x2="370" y2="80" style="stroke:rgb(20,20,20);stroke-width:2"></line>
-         </svg>
-         These are designed to be a sort of crutch, somewhere between making you work it out through context and looking it up in a 
-         dictionary. I have found it to be a valuable learning method, with one notable shortfall - the desire to look at the vocabulary 
-         page, at least for me, was often overwhelming, which undermined some of its educational value. Even a fleeting glance at the 
-         vocabulary page would give me knowledge that would perhaps have been more effective if earned through a bit more struggle. On 
-         an EPUB, you can hide this panel, making it visible only on the reader's explicit request for assistance:
+      
+      <h1>'Sliding' divs:</h1>
+
+      <p>
+         Consider a foreign language reading book, with the original text on one page, and vocabulary hints 
+         on the facing page. This supplementary material is partially intended as a sort of crutch, somewhere 
+         between making you work it out through context and looking it up in a dictionary. I have found it 
+         to be a valuable learning method, with one notable shortfall - the desire to look at the vocabulary 
+         page, at least for me, was often overwhelming, which undermined some of its educational value. Even 
+         a fleeting glance at the vocabulary page would give me knowledge that would perhaps have been more 
+         effective if earned through a bit more struggle. On an EPUB, you can hide this panel, making it visible 
+         only on the reader's explicit request for assistance:
       </p>
+
       <p style="width: 70%; background-color: #ddd; padding-left: 20;">
-         <span class="sliding slidIn">vocab
+         <span class="sliding slidIn">Hint
             <span class="sliderText"><b>Sohn am Ort</b> - the son in town
             <br/><b>Verkehr pflegte...</b> - to keep up contact...</span >
          </span>
@@ -232,30 +302,79 @@
       </p>
       <br/><br/>
       
-      <p>Sliders come in four classes:</p>
+      <p>I've named these 'sliders'. Sliders come in four classes:</p>
+
+      <p><code>
+         &lt;span class="sliding slidIn"&gt;0
+           &lt;span class="sliderText"&gt;sliding...&lt;/span &gt;
+         &lt;/span&gt;
+         
+         &lt;span class="slidingSpan1 slidIn"&gt;1
+           &lt;span class="sliderText"&gt;slidingSpan1...&lt;/span &gt;
+         &lt;/span&gt;
+         
+         &lt;span class="slidingSpan2 slidIn"&gt;2
+           &lt;span class="sliderText"&gt;slidingSpan2...&lt;/span &gt;
+         &lt;/span&gt;
+
+         &lt;span class="slidingSpan3 slidIn"&gt;3
+           &lt;span class="sliderText"&gt;and slidingSpan3.&lt;/span &gt;
+         &lt;/span&gt;
+      </code></p>
+
       <p>
-      <span class="sliding slidIn">0
-         <span class="sliderText">sliding...</span >
-      </span>
+         These are of variable expanded widths, which is customizable in the CSS. They are visible by default, 
+         and hidden on the load of the document in the javascript, which means that non-javascript-enabled readers 
+         will simply show them as expanded. You can make a slider expanded by default by removing the 'slidIn' class.
       </p>
+
       <p>
-      <span class="slidingSpan1 slidIn">1
-         <span class="sliderText">slidingSpan1...</span >
-      </span>
+         Please note that there is a very important semantic distinction to draw between these slider-classed 
+         container elements and the <code>aside</code> element from HTML5. <code>aside</code> is rendered differently by 
+         every e-reader - and sometimes not at all! But if you're looking to use footnotes and endnotes, you should 
+         use the <code>aside</code> element to ensure proper indexing; these sliders are intended for more casual content, 
+         or things like hints or annotations. For instance, if you are working with a text that references a painting, 
+         an image of the painting can be included in a slider for those who haven't seen it, without interrupting 
+         the flow of the text for those who have.
       </p>
-         <p>
-      <span class="slidingSpan2 slidIn">2
-         <span class="sliderText">slidingSpan2...</span >
-      </span>
-      </p>
+
       <p>
-      <span class="slidingSpan3 slidIn">3
-         <span class="sliderText">and slidingSpan3.</span >
-      </span>
+         For the record, here is how to implement references using the EPUB namespace and HTML5. 
+         Here are the reference examples from International Digital Publishing Forum:
       </p>
-      <p>Please note that there is a very important semantic distinction to draw between these slider-classed 
-      container elements and the <code>aside</code> element from HTML5. 
-      </p>
+
+      <p><code>&lt;p&gt;In that year&lt;a href="#ft2f" epub:type="noteref"&gt;2&lt;/a&gt; there were 67 mills engaged in the manufacture of cotton goods …&lt;/p&gt;
+         
+         &lt;aside id="ft2f" epub:type="footnote"&gt;
+         &lt;p&gt;The manufacturing statistics for 1900 which follow are not those given in the Twelfth Census, but are taken from the &lt;em&gt;Census of Manufactures&lt;/em&gt; …&lt;/p&gt;
+         &lt;/aside&gt;
+         
+         
+         &lt;section epub:type="rearnotes"&gt; 
+         &lt;h2&gt;End Notes&lt;/h2&gt;
+         &lt;ol&gt;
+         &lt;li id="en001" epub:type="rearnote"&gt;According to the usual nomenclature, the branch flowing S.W. is called the Chattooga; this unites with the Tallulah to form the Tugaloo, which …&lt;/li&gt;
+         &lt;/ol&gt; 
+         &lt;/section&gt;
+      </code></p>
       
+      
+      <p>And here that is, as an actual part of this book:</p>
+      <p>In that year<a href="#ft2f" epub:type="noteref">2</a> there were 67 mills engaged in the manufacture of cotton goods …</p>
+
+      <aside id="ft2f" epub:type="footnote">
+         <p>The manufacturing statistics for 1900 which follow are not those given in the Twelfth Census, but are taken from the <em>Census of Manufactures</em> …</p>
+      </aside>
+      
+      <section epub:type="rearnotes"> 
+         <h2>End Notes</h2>
+         <ol>
+            <li id="en001" epub:type="rearnote">According to the usual nomenclature, the branch flowing S.W. is called the Chattooga; this unites with the Tallulah to form the Tugaloo, which …</li>
+         </ol> 
+      </section>      
+
+      <p>Note that the footnote linking doesn't work right on every reader, which is another advantage of sliders - 
+      you don't have to leave the page.</p>
+
    </body>
 </html>

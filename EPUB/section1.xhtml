@@ -5,10 +5,12 @@
       <meta name="DC.TITLE" content="EPUB3 Ideas" />
       <meta name="DC.CREATOR" content="J. Tynan Burke" />
       <meta name="DC.FORMAT" content="EPUB3" />
-      <link rel="stylesheet" type="text/css" href="stylesheet.css" />
-      <link rel="stylesheet" type="text/css" href="bootstrap.css" />
-      <script src="jqMin.js" type="text/javascript"></script>
-      <script type="text/javascript" src="test.js"></script>
+      <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+      <script src="js/jqMin.js" type="text/javascript"></script>
+      <script src="js/jqCycle.js" type="text/javascript"></script>
+      <script type="text/javascript" src="js/script.js"></script>
+      <script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
    <body>
    <section epub:type="introduction">
@@ -19,14 +21,111 @@
       <a href="https://github.com/thearchduke/epubStrap">GitHub</a>.</p>
       <div class="sliding slidIn">+/-
          <span class="sliderText">I'm an expandable and collapsible block! You can use me for things like 
-         little notes that people don't necessarily need to read, or 'hint' content you might want to otherwise 
-         hide.</span >
+         little notes that people don't necessarily need to read. Like this.</span >
       </div>
-      <div class="sliding slidIn">+/-
-         <span class="sliderText">I'm an expandable and collapsible block! You can use me for things like 
-            little notes that people don't necessarily need to read, or 'hint' content you might want to otherwise 
-            hide.</span >
-      </div>
+      <p>
+         EPUB3 is an emerging standard that holds much promise for the future of publishing. It can be difficult to 
+         work with, thought it doesn't need to be. This code provides a set of documents that have already done a lot 
+         of the heavy lifting so that you can focus on what matters - making the XHTML documents that provide the contents 
+         of the eBook itself. So, without further ado...
+      </p>
+   </section>
+      
+   <section epub:type="part">
+      <h1>Instructions</h1>
+      <ol>
+         <li>First, what's your development environment look like? I recommend software like 
+            <a href="http://www.oxygenxml.com/xml_author.html">Oxygen</a>. It's a good investment if you plan on doing 
+         this sort of thing a lot, but it's by no means necessary. At the very least, I'd recommend an XML editor; here's 
+            <a href="http://en.wikipedia.org/wiki/Comparison_of_XML_editors">the Wikipedia article comparing them</a>. 
+            If you do decide to go with Oxygen, here are some shortcuts:
+
+            <div class="slidingSpan3 slidIn">+/-
+               <span class="sliderText">Rather than downloading the uncompressed code skeleton, you can just download 
+               the code skeleton as an actual EPUB, open Oxygen Author, open the EPUB that way through the Archive 
+               Browser, and work inside the compressed EPUB that way. If you do this, you can skip the compression 
+               and validation steps at the end (assuming that you ask Oxygen to validate your eBook, of course).</span >
+            </div></li>
+         
+         <li>Download the code skeleton. The rest of these instructions assume that you have extracted the code 
+         skeleton into an empty directory; this entire project takes place in the EPUB directory inside that directory.</li>
+         <li>Pull up <a href="https://github.com/thearchduke/epubStrap">this book's code</a> on GitHub if you'd like 
+            to see what it looks like under the hood.</li>
+         <li>Open the section skeleton (section1.xhtml) and update the meta tags to show the appropriate information.</li>
+         <li>Break your document up into sections so you know how many content XHTML files you'll need. Every new file 
+            will show up as an item in the table of contents and start on a fresh page. In fact, as of this writing, 
+            the only way to reliably force content to start on a new page is to put it in its own file.</li>
+         <li>Make those documents by copying the section skeleton (section1.xhtml) and naming the copies as you see fit, 
+            one document for each section from the previous step. Doing it this way ensures that all of the javascript, 
+            CSS, and font files are correctly linked for all your new sections.</li>
+         <li>Open content.opf, toc.ncx, and toc.xhtml.</li>
+         <li>In content.opf, update the Dublin Core metadata items appropriately, and make sure to give it a unique 
+         <code>dc:identifier</code> entry.</li>
+         <li>In the manifest section of content.opf, declare your new XHTML documents as items. Remember to give them 
+         each a unique ID. You can follow the pattern I used to declare section1.xhtml. Do this for any other files you 
+         may have added, too. If you're not sure what to put 
+         down for <code>media-type</code>, I would recommend looking it up on Google, as it needs to be specific.</li>
+         <li>In the spine section of content.opf, follow my examples for the itemrefs and put your content in order. 
+         Remember that you're using the unique IDs from the manifest.</li>
+         <li>In toc.ncx, follow my pattern again to add all of your new content files.</li>
+         <li>Do the same in toc.xhtml.</li>
+         <li><b>Remember to add any new files you put in the EPUB directory to the manifest, and make sure you 
+         add any new section files to the spine of content.opf and the two toc files.</b></li>
+         <li>Write your eBook in your new XHTML files. Feel free to take advantage of the interactive features I explain 
+         in the next section, which, if you've started with the code skeleton, you will already have access to. 
+         At this point, it's easiest to think of those XHTML files as little web pages, so build away! 
+         (<b>Remember: you can't expect users to be able to download outside content.</b> If you want to 
+         add a new javascript library, you have to download it and put it inside the EPUB folder somewhere 
+         (and then add it to the manifest).)</li>
+         <li>When you're done, it's time to compress and validate the file. On Unix-like systems like Linux and Mac OSX, 
+         open up a terminal window, navigate to the directory from step 2 (the one that has the EPUB and META-INF 
+         directories inside of it), and type:
+            <code><br/>zip -0Xq  nameofbook.epub mimetype
+               <br/>zip -Xr9Dq nameofbook.epub *</code>
+            <br/>where nameofbook is the name of your book. If you are running Windows, the tool 
+            <a href="http://stahlworks.com/dev/index.php?tool=zipunzip">zip.exe</a> can help (instructions 
+            <a href="http://www.gbenthien.net/Kindle%20and%20EPUB/MakingEbook.html">here</a>).
+         </li>
+         <li>Validate your eBook with the IDPF online <a href="http://validator.idpf.org/">here</a> if it's less than 
+            10MB in size, or <a href="https://code.google.com/p/epubcheck/">download the command-line tool</a> if it's 
+         bigger. (If you need to free up space, feel free to delete any of the fonts I've provided that you aren't using - 
+         but remember to remove any files you delete from the manifest!)</li>
+      </ol>
+
+      <h1>Notes on Accessibility:</h1>
+      <h2>EPUB3 readers:</h2>
+      <p>The 'official'-est EPUB3 reader can be found at <a href="http://readium.org">readium.org</a>. You can also 
+      put content directly onto your mobile device or tablet through either the normal method of putting files onto it 
+      or a service like <a href="www.dropbox.com">Dropbox</a>. Readium has the advantage of being able to read 
+      uncompressed directories pre-publishing as well as validating your project when you import it.</p>
+      
+      <p>Every EPUB3 reader is different, much like every web browser is different. Unlike web browsers, though, EPUB3 
+      hasn't been around long enough for the readers to be as standardized as browsers have become. If you're thinking 
+      of implementing a new feature or interactive element, remember to test if it works on any various devices 
+      you might have handy. <b>Most importantly, make sure that any elements you want to be visible in a 
+      non-javascript-enabled device are hidden in the 'hidden classes' section of js/script.js, 
+      and not hidden in the CSS.</b> That way, when the javascript doesn't fire, the object isn't hidden - you only 
+      lose the interactivity, not the content. This is not the case for quizzes - as it is currently set up, 
+      the <code>explanation</code> element in the interactive quizzes is hidden in the CSS so the answer isn't 
+      automatically shown on non-javascript-enabled readers. If you'd prefer for it to be the other way, simply delete 
+      <code>display: none;</code> on the css/stylesheet.css entry for <code>explanation</code>, and then 
+      un-comment the line in js/script.js hiding <code>explanation</code>.</p>
+
+      <h2>Fonts:</h2>
+      <p>I've provided a fair number of fonts in the code skeleton, and they account for a good deal of the file size. 
+      Feel free to remove some from the project, but make sure to update the manifest if you do. I've included the full 
+      display families of Linux Biolinum and Linux Libertine, which are pleasant-looking public-domain serif and 
+      sans-serif fonts, respectively. Follow my example in css/fonts.css to add more fonts from the <code>fonts</code> 
+      folder (and, of course, make sure to incorporate those fonts in css/stylesheet.css). They're all public domain, 
+      so go nuts.</p>
+
+      <h1>Minutiae:</h1>
+      <ul>
+         <li>The interactive elements that require button-pushing can be a bit spotty on smartphones, since pushing 
+            the screen sometimes turns the page.</li>
+         <li></li>
+      </ul>
+
    </section>
    </body>
 </html>
