@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dcterms="http://purl.org/dc/terms/" version="3.0" xml:lang="en"
+    unique-identifier="bookid">
+    <metadata>
+        <dc:title>EPUB3 Helper</dc:title>
+        <dc:creator>J. Tynan Burke</dc:creator>
+        <dc:language id="pub-language">en</dc:language>
+        <dc:identifier id="bookid">http://www.tynanburke.com/distro</dc:identifier>
+        <meta property="dcterms:modified">2013-06-20T22:17:24Z</meta>
+    </metadata>
+    <manifest>
+        <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+        <item id="htmltoc" properties="nav" media-type="application/xhtml+xml" href="toc.xhtml"/>
+        <item id="front_cover" href="front-cover.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+        <item id="section1" href="section1.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+        <item id="section2" href="section2.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+        <item id="style" href="css/stylesheet.css" media-type="text/css"/>
+        <item id="fonts" href="css/fonts.css" media-type="text/css"/>
+        <item id="bootstrappCSS" href="css/bootstrap.css" media-type="text/css"/>
+        <item id="js" href="js/script.js" media-type="text/javascript" fallback="section1"/>
+        <item id="bootstrapJS" href="js/bootstrap.js" media-type="text/javascript" fallback="section1"/>
+        <item id="jq" href="js/jqMin.js" media-type="text/javascript" fallback="section1"/>
+        <item id="jqCycle" href="js/jqCycle.js" media-type="text/javascript" fallback="section1"/>
+        <item id="video1" href="movies/movieSample.mp4" media-type="video/mp4"/>
+        <item id="video2" href="movies/movieSample.webm" media-type="video/webm"/>
+        <item id="LinBiolinum_K" href="fonts/LinBiolinum_K.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinBiolinum_R" href="fonts/LinBiolinum_R.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinBiolinum_RB" href="fonts/LinBiolinum_RB.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinBiolinum_RI" href="fonts/LinBiolinum_RI.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinLibertine_DR" href="fonts/LinLibertine_DR.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinLibertine_I" href="fonts/LinLibertine_I.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinLibertine_M" href="fonts/LinLibertine_M.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinLibertine_R" href="fonts/LinLibertine_R.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinLibertine_RB" href="fonts/LinLibertine_RB.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinLibertine_RBI" href="fonts/LinLibertine_RBI.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinLibertine_RI" href="fonts/LinLibertine_RI.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinLibertine_RZ" href="fonts/LinLibertine_RZ.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="LinLibertine_RZI" href="fonts/LinLibertine_RZI.otf" media-type="application/vnd.ms-opentype"/>
+        <item id="slide1" href="images/column-1.png" media-type="image/png"/>
+        <item id="slide2" href="images/column-2.png" media-type="image/png"/>
+        <item id="slide3" href="images/column-3.png" media-type="image/png"/>
+        <item properties="cover-image" id="cover" href="images/bookHelp.jpg" media-type="image/jpeg"/>
+    </manifest>
+    <spine toc="ncx">
+        <itemref idref="front_cover"/>
+        <itemref idref="section1"/>
+        <itemref idref="section2"/>
+    </spine>
+</package>
