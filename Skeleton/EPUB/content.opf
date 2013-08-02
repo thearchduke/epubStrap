@@ -11,10 +11,10 @@
         <meta property="dcterms:modified">2013-06-20T22:17:24Z</meta>
     </metadata>
     <manifest>
+        
+    <!-- The following are structural elements and do not need to be changed -->
         <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
         <item id="htmltoc" properties="nav" media-type="application/xhtml+xml" href="toc.xhtml"/>
-        <item id="front_cover" href="front-cover.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
-        <item id="section1" href="section1.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
         <item id="style" href="css/stylesheet.css" media-type="text/css"/>
         <item id="fonts" href="css/fonts.css" media-type="text/css"/>
         <item id="bootstrappCSS" href="css/bootstrap.css" media-type="text/css"/>
@@ -22,8 +22,24 @@
         <item id="bootstrapJS" href="js/bootstrap.js" media-type="text/javascript" fallback="section1"/>
         <item id="jq" href="js/jqMin.js" media-type="text/javascript" fallback="section1"/>
         <item id="jqCycle" href="js/jqCycle.js" media-type="text/javascript" fallback="section1"/>
+        
+
+    <!-- The following are content elements ('sections') and should be updated as appropriate, for instance 
+        when adding new chapters: -->
+        <item id="front_cover" href="front-cover.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+        <item id="section1" href="section1.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+
+    <!-- The following are multimedia object examples that should be emulated when adding new content. Note that 
+        @media-type is variable; while it is optional, including it will allow for maximum accessibility. Since 
+        the file formats far outnumber my ability to list them all, I suggest an online search for to find the 
+        correct value for @media-type on new formats. -->
+        <item id="imgExample" href="images/example.png" media-type="image/png"/>
+        <item properties="cover-image" id="cover" href="images/bookHelp.jpg" media-type="image/jpeg"/>
         <item id="video1" href="movies/movieSample.mp4" media-type="video/mp4"/>
         <item id="video2" href="movies/movieSample.webm" media-type="video/webm"/>
+
+    <!-- The following are fonts; feel free to remove unused files as needed. Remember to remove the file from the 
+        fonts/ directory as well as from this manifest. -->
         <item id="LinBiolinum_K" href="fonts/LinBiolinum_K.otf" media-type="application/vnd.ms-opentype"/>
         <item id="LinBiolinum_R" href="fonts/LinBiolinum_R.otf" media-type="application/vnd.ms-opentype"/>
         <item id="LinBiolinum_RB" href="fonts/LinBiolinum_RB.otf" media-type="application/vnd.ms-opentype"/>
@@ -37,11 +53,9 @@
         <item id="LinLibertine_RI" href="fonts/LinLibertine_RI.otf" media-type="application/vnd.ms-opentype"/>
         <item id="LinLibertine_RZ" href="fonts/LinLibertine_RZ.otf" media-type="application/vnd.ms-opentype"/>
         <item id="LinLibertine_RZI" href="fonts/LinLibertine_RZI.otf" media-type="application/vnd.ms-opentype"/>
-        <item id="slide1" href="images/column-1.png" media-type="image/png"/>
-        <item id="slide2" href="images/column-2.png" media-type="image/png"/>
-        <item id="slide3" href="images/column-3.png" media-type="image/png"/>
-        <item properties="cover-image" id="cover" href="images/bookHelp.jpg" media-type="image/jpeg"/>
     </manifest>
+
+    <!-- Put your content in order here, using the @idref to the items as declared above -->
     <spine toc="ncx">
         <itemref idref="front_cover"/>
         <itemref idref="section1"/>
